@@ -1,4 +1,4 @@
-﻿namespace StudentRegistrationInformation
+﻿namespace StudentRegistrationApplication
 {
     partial class frmStudentRegistration
     {
