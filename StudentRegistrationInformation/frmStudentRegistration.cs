@@ -86,12 +86,37 @@ namespace StudentRegistrationApplication
         {
 
         }
+        ///
+        private void message(string lastName, string firstName, string midName, string gender, string day, string month, string year, string program)
+        {
+            MessageBox.Show("Student Name: " + firstName + " " + midName + " " + lastName
+                + "\nGender: " + gender
+                + "\nDate of birth: " + day + "/" + month + "/" + year
+                + "\nProgram: " + program);
+
+        }
+        private void messageBox(string lastName, string firstName, string midName, string program)
+        {
+            MessageBox.Show("Student Name: " + firstName + " " + midName + " " + lastName
+                + "\nProgram: " + program);
+        }
+        private void messageBox(string lastName, string firstName, string midName, string day, string month, string year, string program)
+        {
+            MessageBox.Show("Student Name: " + firstName + " " + midName + " " + lastName
+                + "\nDate of birth: " + day + "/" + month + "/" + year
+                + "\nProgram: " + program);
+        }
+        private void messageBox(string lastName, string firstName, string midName, string gender, string program)
+        {
+            MessageBox.Show("Student Name: " + firstName + " " + midName + " " + lastName
+                + "\nGender: " + gender
+                + "\nProgram: " + program);
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string lastName, firstName, midName, program, month;
+            string lastName, firstName, midName, program, month, day, year;
             string gender = "";
-            int day, year;
             lastName = textBox1.Text;
             firstName = textBox2.Text;
             midName = textBox3.Text;
@@ -105,16 +130,27 @@ namespace StudentRegistrationApplication
                 gender = radioButton2.Text;
             }
 
-            day = Convert.ToInt32(comboBox1.Text);
+            day = comboBox1.Text;
             month = comboBox2.Text;
-            year = Convert.ToInt32(comboBox3.Text);
+            year = comboBox3.Text;
             program = comboBox4.Text;
 
-            MessageBox.Show("Student Name: " + firstName + " " + midName + " " + lastName 
-                + "\nGender: " + gender 
-                + "\nDate of birth: " + day + "/" + month + "/" + year 
-                + "\nProgram: " + program);
-
+            if (lastName != null && firstName != null && midName != null && day != "-Day-" && month != "-Month-" && year != "-Year-" && program != null && !radioButton1.Checked && !radioButton2.Checked)
+            {
+                messageBox(lastName, firstName, midName, day, month, year, program);
+            }
+            else if (lastName != null && firstName != null && midName != null && gender != null && day != "-Day-" && month != "-Month-" && year != "-Year-" && program != null)
+            {
+                message(lastName, firstName, midName, gender, day, month, year, program);
+            }
+            else if (lastName != null && firstName != null && midName != null && program != null && !radioButton1.Checked && !radioButton2.Checked)
+            {
+                messageBox(lastName, firstName, midName, program);
+            }
+            else if (lastName != null && firstName != null && midName != null && gender != null && program != null)
+            {
+                messageBox(lastName, firstName, midName, gender, program);
+            }
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -125,6 +161,24 @@ namespace StudentRegistrationApplication
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.InitialDirectory = "";
+            openFileDialog1.Title = "Open Files";
+            openFileDialog1.ShowDialog();
+             pictureBox1.Image = Image.FromFile(openFileDialog1.FileName);
         }
     }
 }
